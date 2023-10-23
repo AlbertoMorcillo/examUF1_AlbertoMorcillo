@@ -329,5 +329,21 @@ function getUserAdmin($email){
     } catch (PDOException $e) {
         die("No es pot establir connexió amb la base de dades");
     }
+}
+
+//Ex13
+function changePasswordUser($userId, $password){
+    try {
+        $connexio = getConnection();
+
+        $statement = $connexio->prepare('UPDATE users SET password = :password, :userId WHERE id = :userId');
+
+        $statement->bindParam('password', $password);
+        $statement->bindParam('userId', $userId, PDO::PARAM_INT);
+
+        $statement->execute();
+    } catch (PDOException $e) {
+        die("No es pot establir connexió amb la base de dades");
+    }
 
 }

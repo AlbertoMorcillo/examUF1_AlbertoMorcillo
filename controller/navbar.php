@@ -18,8 +18,8 @@ include_once '../controller/session.php';
     $loginActive = $file== "login" ? "active" : "";
     $signupActive = $file == "sign-up" ? "active" : "";
     $createActive = $file == "edit" ? "active" : "";
-    $passwordActive = $file == "change-password" ? "active" : "";    
+    $passwordActive = $file == "change-password" ? "active" : "";
+    $recoveryPasswordActive = $file == "recovery-password" ? "active" : "";        
 //EX1
 // require_once '../view/navbar.view.php';
-
     include_once '../view/navbar.view.php';
