@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2022 a las 19:29:51
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 23-10-2023 a las 20:34:59
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,13 +41,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `dateTime` timestamp NOT NULL DEFAULT current_timestamp(),
   `image_path` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Truncar tablas antes de insertar `posts`
---
-
-TRUNCATE TABLE `posts`;
 --
 -- Volcado de datos para la tabla `posts`
 --
@@ -95,6 +90,7 @@ INSERT INTO `posts` (`id`, `synopsis`, `title`, `director`, `link`, `youtube_lin
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
+  `administrador` tinyint(1) NOT NULL,
   `nickname` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -103,22 +99,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_me_token` text NOT NULL,
   `social_provider` enum('','Twitter','GitHub','Google') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Truncar tablas antes de insertar `users`
---
-
-TRUNCATE TABLE `users`;
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`nickname`, `email`, `password`, `id`, `reset_token`, `remember_me_token`, `social_provider`) VALUES
-('Anakin', 'anakinskywalker@example.com', 'dd9d21e22391090ddce7c6ed58c6412d', 1, '', '', ''),
-('Usuari1', 'user@example.com', 'dd9d21e22391090ddce7c6ed58c6412d', 2, '', '', ''),
-('Luke', 'lukeskywalker@sapalomera.cat', '', 3, '', 'da8aa95050bdaede6d7415e9af84ef1a', 'GitHub'),
-('Obi-Wan', 'Obiwankenobi.02@gmail.com', '', 4, '', '', 'Twitter');
+INSERT INTO `users` (`administrador`, `nickname`, `email`, `password`, `id`, `reset_token`, `remember_me_token`, `social_provider`) VALUES
+(0, 'Anakin', 'anakinskywalker@example.com', 'dd9d21e22391090ddce7c6ed58c6412d', 1, '', '', ''),
+(0, 'Usuari1', 'user@example.com', 'dd9d21e22391090ddce7c6ed58c6412d', 2, '', '', ''),
+(0, 'Luke', 'lukeskywalker@sapalomera.cat', '', 3, '', 'da8aa95050bdaede6d7415e9af84ef1a', 'GitHub'),
+(0, 'Obi-Wan', 'Obiwankenobi.02@gmail.com', '', 4, '', '', 'Twitter'),
+(1, 'Albertooo', 'a.morcillo@sapalomera.cat', '161ebd7d45089b3446ee4e0d86dbcf92', 5, '', 'd259b0bdf8e829c863d01f6d6c5728a5', ''),
+(0, 'aaayudaaa', 'a@mrocillo.com', '$2y$10$jQ8BRnPF6eGrt/4dQzkyLeXON', 6, '', '9cefcae5fc86b51540367b958bf03489', ''),
+(0, 'Albertooooo', 'amorcillo@sapalomera.com', '$2y$10$1ntqmIHn/6q73tl/cT0wMeIQm', 7, '', '210cdb221499545cc4af6850a21bdb54', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
