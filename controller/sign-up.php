@@ -48,9 +48,13 @@ function signup($email, $nickname, $password1, $password2) {
     checkPasswords($password1, $password2);
 
     if (!empty($errors)) return;
-
-    $md5Hash = md5($password1);
-    insertNewUser($email, $nickname, $md5Hash);
+//Ex11
+    // $md5Hash = md5($password1);
+    // insertNewUser($email, $nickname, $md5Hash);
+    // startSession($email, true);
+    // redirectHome();
+    $hashedPassword = password_hash($password1, PASSWORD_DEFAULT); 
+    insertNewUser($email, $nickname, $hashedPassword);
     startSession($email, true);
     redirectHome();
 }
