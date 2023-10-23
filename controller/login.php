@@ -69,6 +69,10 @@ function checkUserInput($email, $password)
         return;
     }
 
+    // $hashedPassword = password_hash($password1, PASSWORD_DEFAULT); 
+    // insertNewUser($email, $nickname, $hashedPassword);
+    // startSession($email, true);
+    // redirectHome();
     $md5Hash = md5($password);
     $md5HashDB = getUserHash($email);
 
@@ -78,17 +82,33 @@ function checkUserInput($email, $password)
     }
 }
 
+// }
+// $hashedPasswordDB = getUserHash($email);
+// $isPasswordCorrect = password_verify($password, $hashedPasswordDB);
+
+// if (!$isPasswordCorrect) {
+//     $errors['password'] = "Wrong password.";
+//     return;
+// }
+// }
 /**
  * Inicia sessió a l'usuari i el redirigeix a l'inici
  *
  * @param string $email email de l'usuari
  * 
  */
+//Ex5
 function login($email, $keepSession)
 {
+    $administrador = false;
     if (isset($_SESSION["loginTries"]))
         unset($_SESSION["loginTries"]);
 
     startSession($email, $keepSession);
+    if(getUserAdmin($email) == 1){
+        $administrador = true;
+        header("Location: ./index_admin.php");
+            exit();
+    }
     redirectHome();
 }

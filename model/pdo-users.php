@@ -314,3 +314,20 @@ function clearResetToken($userId)
     setResetToken($userId, "");
 }
 
+//Ex5
+function getUserAdmin($email){
+    try {
+        $connexio = getConnection();
+
+        $statement = $connexio->prepare('SELECT administrador FROM users WHERE administrador = 1');
+
+        $statement->execute();
+
+        $result = $statement->fetch();
+
+        return $result['administrador'];
+    } catch (PDOException $e) {
+        die("No es pot establir connexió amb la base de dades");
+    }
+
+}
