@@ -1,7 +1,11 @@
 <?php
 
+// Ex1
+// He cambiado el de controlador de require_once por include_once
+// require_once '../controller/session.php';
+
 require_once '../model/pdo-articles.php';
-require_once '../controller/session.php';
+include_once '../controller/session.php';
 
 $postsPerPage = 10;
 
@@ -48,4 +52,7 @@ $previousPageLink = $firstPage ? "#" : $searchQuery . "page=" . ($currentPage - 
 $firstPageLink = $firstPage ? "#" : $searchQuery . "page=1";
 $lastPageLink = $lastPage ? "#" : $searchQuery . "page=$nPages";
 
-require_once '../view/index.view.php';
+//Ex1
+//He cambiado de require_once a include_once
+// require_once '../view/index.view.php';
+include_once '../view/index.view.php';

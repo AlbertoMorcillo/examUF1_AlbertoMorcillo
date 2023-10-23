@@ -1,9 +1,11 @@
 
 <?php
-
+//Ex1
+// require_once '../controller/session.php';
+// require_once '../controller/input-common.php';
 require_once '../model/pdo-users.php';
-require_once '../controller/session.php';
-require_once '../controller/input-common.php';
+include_once '../controller/session.php';
+include_once '../controller/input-common.php';
 
 $errors = [];
 
@@ -23,8 +25,9 @@ if(isset($_POST['email'])) {
 
     signup($email, $nickname, $password1, $password2);
 }
-
-require_once '../view/sign-up.view.php';
+//Ex1
+// require_once '../view/sign-up.view.php';
+include_once '../view/sign-up.view.php';
 
 // Funcions
 

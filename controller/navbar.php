@@ -1,7 +1,8 @@
 <?php
-
+//Ex1
+// require_once '../controller/session.php';
 require_once '../model/pdo-users.php';
-require_once '../controller/session.php';
+include_once '../controller/session.php';
 
     $userId = getSessionUserId();
     
@@ -18,5 +19,7 @@ require_once '../controller/session.php';
     $signupActive = $file == "sign-up" ? "active" : "";
     $createActive = $file == "edit" ? "active" : "";
     $passwordActive = $file == "change-password" ? "active" : "";    
+//EX1
+// require_once '../view/navbar.view.php';
 
-    require_once '../view/navbar.view.php';
+    include_once '../view/navbar.view.php';

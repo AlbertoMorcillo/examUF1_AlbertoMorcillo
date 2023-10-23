@@ -1,8 +1,11 @@
 
 <?php
 
+// Ex1
+// He cambiado los dos de controlador de require_once por include_once
+// require_once '../controller/session.php';
+include_once '../controller/session.php';
 require_once '../model/pdo-articles.php';
-require_once '../controller/session.php';
 
 session_start();
 $userId = getSessionUserId();

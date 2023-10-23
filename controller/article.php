@@ -1,8 +1,13 @@
 <?php
 
+// Ex1
+// He cambiado los dos de controlador de require_once por include_once
+// require_once '../controller/input-common.php';
+// require_once '../controller/session.php';
+
 require_once '../model/pdo-articles.php';
-require_once '../controller/input-common.php';
-require_once '../controller/session.php';
+include_once '../controller/input-common.php';
+include_once '../controller/session.php';
 
 if (isset($_GET['id'])) {
     $articleId = $_GET['id'];

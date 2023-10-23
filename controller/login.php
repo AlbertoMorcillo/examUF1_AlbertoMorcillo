@@ -1,8 +1,12 @@
 <?php
-
+// Ex1
+// He cambiado los dos de controlador de require_once por include_once
+// require_once '../controller/input-common.php';
+// require_once '../controller/session.php';
 require_once '../model/pdo-users.php';
-require_once '../controller/input-common.php';
-require_once '../controller/session.php';
+include_once '../controller/input-common.php';
+include_once '../controller/session.php';
+
 
 $errors = [];
 $email;
@@ -18,8 +22,10 @@ if ($userId != 0) {
 if (isset($_POST['submit'])) {
     onSubmit();
 }
-
-require_once '../view/login.view.php';
+// Ex1
+// He cambiado los dos de controlador de require_once por include_once
+// require_once '../view/login.view.php';
+include_once '../view/login.view.php';
 
 function onSubmit()
 {
